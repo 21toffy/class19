@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} alert alert-success" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+{% comment %}{% if request.user.is_authenticated %}{% endif %}
+{% endcomment %}
+
+
+
+
+{% if request.user.is_authenticated %}
+<div class="col-sm-12 col-md-5">
+        {% for p in profile %}
+    <div class="card">
+        <div class="row">
+            <div class="col-sm-12 col-md-5 col-lg-7">
+                <div class="container-fluid">
+                    <h1 style="padding: 20px 0px 20px 20px;"></h1>
+                    
+                    <div class="user-image">
+                            <img src="{{p.avi.url}}" alt="{{current_user}} profile picture"class='img-thumbnail rounded-circle' />
+                        </div>
+                        <a href="{% url 'users:profile_detail' p.pk %}"><span style="font-weight: 800;">{{p.aka}}</span></a>
+                        <span style="font-weight: 800;">{{p.words}}</span><br>
+                        <span style="font-weight:800">matric :</span>{{p.matric}}<br>
+                        <span style="font-weight:800">Department :</span> {{p.department}}<br><br><br><br>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div><br>
+    {% endfor%}
+</div>
+{% endif %}
+
+
+{% if request.user.is_authenticated and request.user.is_superuser %}
+<div class="col-sm-12 col-md-5">
+        {% for p in profile %}
+    <div class="card">
+        <div class="row">
+            <div class="col-sm-12 col-md-5 col-lg-7">
+                <div class="container-fluid">
+                    <h1 style="padding: 20px 0px 20px 20px;">edit your profile</h1>
+                    
+                    <div class="user-image">
+                            <img src="{{p.avi.url}}" alt="{{current_user}} profile picture"class='img-thumbnail rounded-circle' />
+                        </div>
+                        <a href="{% url 'users:profile_detail' p.pk %}"><span style="font-weight: 800;">{{p.aka}}</span></a>
+                        <span style="font-weight: 800;">{{p.words}}</span><br>
+                        <span style="font-weight:800">matric :</span>{{p.matric}}<br>
+                        <span style="font-weight:800">Level :</span> {{p.department}}<br><br>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+{% endif %}
+
+
+{% endblock %}
+
+
+<a href="{% url 'lms:course_detail' course.slug %}">{{course.title}}- {{course.code}}</a>

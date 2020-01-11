@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}edit contact form{% endblock %}
+
+{% block content %}
+  
+ 
+<form action = "" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.errors }}
+          {{form.label_tag}}
+          {{form|crispy}}
+        </div>
+        <input type = "submit" value="submit" class="btn btn-primary">
+      </form>
+
+{% endblock %}
+
+{% comment %}
+
+{% if user.is_authenticated %}
+<div class="partingwordsdiv" style="background-color: rgba(249, 249, 249, 0.8);">
+Hi {{ user.username }}<h2>say something</h2>
+<h3>Note that this can not be changed at any point in this life!!, maybe The next Life sha.</h3><div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <form action = "" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ form.errors }}
+              {{form.label_tag}}
+              {{form|crispy}}
+            </div>
+            <input type = "submit" value="submit" class="btn btn-primary">
+          </form>
+    </div>
+  </div>
+</div>
+</div>
+
+{% else %}
+{% endif %}
+{% endcomment %}

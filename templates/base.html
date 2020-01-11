@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'class19/css/bootstrap.min.css'%}"/>
+    <link rel="stylesheet" href="{% static 'class19/css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'class19/css/style.css'%}"/>
+  <meta charset="utf-8">
+  <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+        <nav class="nav">
+                <div class="container">
+                    
+                    <div class="logo">
+                        <a class="navbar-brand logo" href="{% url 'home' %}" >1402</a>
+                    </div>
+                    <div id="mainListDiv" class="main_list">
+                        <ul class="navlinks">
+                                                       
+                            <li><a href="{% url 'users:ProfileListView' %}" >Words on marble</a></li>
+                            <li><a href="#" >Gallery</a></li>
+                            {% if user.is_authenticated %}
+                            
+                            
+                            <li>
+                                    {% if request.user.parting_word %}
+                                      
+                                    {% else %}
+                                    <a href="{% url 'users:PartingWords' %}" >your parting words</a>
+                                    {% endif %} 
+ 
+                             </li>
+                            <li><a href="{% url 'logout' %}" >Logout: {{request.user.aka}}</a></li>
+
+                            {% else %}
+                            <li><a href="{% url 'login' %}" >Login</a></li>
+                            <li><a href="{% url 'users:signup' %}" >Register</a></li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                    <span class="navTrigger">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </span>
+                </div>
+            </nav>
+            
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="container">
+                {% block content %}  
+                    
+                {% endblock %}
+            </div >
+</body>
+<script src="{% static 'class19/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'class19/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'class19/js/,9mixitup.min.js' %}"></script>
+<script src="{% static 'class19/js/circle-progress.min.js' %}"></script>
+<script src="{% static 'class19/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'class19/js/main.js' %}"></script>
+</html>
+
+
+
