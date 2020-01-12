@@ -44,7 +44,7 @@ class UserCreationForm(UserCreationForm):
     department = forms.CharField(
                             # help_texts =
                             # error_messages =
-                            max_length=3,
+                            # max_length=3,
                             widget=forms.Select(choices=DEPARTMENT, attrs={'class':'form-control'}),
                             label = 'department',
                             )
