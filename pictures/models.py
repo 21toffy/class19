@@ -3,7 +3,7 @@ from PIL import Image
 
 from users.models import CustomUser
 
-class PictureAlbum(models.Model):
+class Album(models.Model):
     picture1 = models.ImageField(upload_to = 'Album_pictures')
     picture2 = models.ImageField(upload_to = 'Album_pictures' , null=True, blank=True)
     picture3 = models.ImageField(upload_to = 'Album_pictures' , null=True, blank=True)
