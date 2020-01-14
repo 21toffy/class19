@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import picturedetail
-from users import views
+from pictures import views
+
+from pictures.views import PhotoUpload
+
 
 app_name = 'gallery'
 
@@ -10,6 +13,8 @@ urlpatterns = [
     
 
     path('gallery/<pk>', views.picturedetail.as_view(), name  = 'profile_detail' ),
+
+    path('upload-picture/', PhotoUpload.A),
 
 
     

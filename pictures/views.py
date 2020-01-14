@@ -24,3 +24,11 @@ class picturedetail(DetailView):
 
         context['images'] = picturedetailimage.objects.filter(album=self.object.id)
         retur context
+
+
+
+
+class PhotoUpload(CreateView):
+    form_class = PictureForm
+    success_url = reverse_lazy('users:home')
+    template_name = 'photouploadpage.html'
